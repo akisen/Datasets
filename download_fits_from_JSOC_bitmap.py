@@ -8,7 +8,7 @@ import glob
 import calendar
 client = jsoc.JSOCClient()
 years = [i+2013 for i in range(7)]
-months = [i+1 for i in range(12)]
+months = [i+2 for i in range(11)]
 def remove_glob(pathname, recursive=True):
     for p in glob.glob(pathname, recursive=recursive):
         if os.path.isfile(p):
@@ -18,7 +18,7 @@ for year in years:
         days = [day+1 for day in range(calendar.monthrange(year, month)[1])]
         for day in days:
             start = datetime.datetime(year,month,day,00,00,00)
-            end = datetime.datetime(year,month,day+1,00,00,00)
+            end =start+datetime.timedelta(days=1)
             print(start,end)
             response = client.search(a.Time(start,end),a.jsoc.Series('hmi.Mharp_720s'),a.Sample(1*u.hour) ,a.jsoc.Notify("f20c012d@mail.cc.niigata-u.ac.jp")) #開始時間のところに等号を入れられなかったので調整 
             path = "/media/akito/Data/Mharp/bitmap/"+str(year)+"/"+str(year)+str(month).zfill(2)
