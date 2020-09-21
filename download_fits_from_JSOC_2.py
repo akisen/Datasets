@@ -17,6 +17,6 @@ args = sys.argv
 start = args[3]
 end = args[4]
 print(start,end)
-response = client.search(a.Time(start,end),a.jsoc.Series(args[1]),a.Sample(1*u.hour),a.jsoc.Notify("f20c012d@mail.cc.niigata-u.ac.jp"),jsoc.Segment(args[2])) 
-res = response.client.fetch(response,path="/media/akito/Data"+str(args[1]))
+response = client.search(a.Time(start,end),a.jsoc.Series(args[1]),a.Sample(1*u.hour),a.jsoc.Notify("akitrb001@gmail.com"),jsoc.Segment(args[2])) 
+res = response.client.fetch(response,path="/media/akito/Data/"+str(args[1]))
 print(response)
