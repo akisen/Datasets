@@ -11,6 +11,8 @@ from sunpy.net import attrs as a
 from datetime import datetime as dt
 import datetime 
 import sys
+
+
 client = jsoc.JSOCClient()
 
 args = sys.argv
@@ -18,5 +20,5 @@ start = args[3]
 end = args[4]
 print(start,end)
 response = client.search(a.Time(start,end),a.jsoc.Series(args[1]),a.Sample(1*u.hour),a.jsoc.Notify("f20c012d@mail.cc.niigata-u.ac.jp"),jsoc.Segment(args[2])) 
-res = response.client.fetch(response,path="/media/akito/Data"+str(args[1]))
+res = response.client.fetch(response,path="/media/akito/Data21"+str(args[1]))
 print(response)
