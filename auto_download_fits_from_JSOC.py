@@ -3,8 +3,9 @@ import datetime
 from dateutil.relativedelta import relativedelta
 from retrying import retry,RetryError
 from  requests.exceptions import HTTPError 
+import time
 
-years = [i+2014 for i in range(6)]
+years = [i+2016 for i in range(4)]
 months = [i+1 for i in range (12)]
 def retry_if_exception(exception):
     return isinstance(exception,HTTPError) 
@@ -19,9 +20,12 @@ for year in years:
         command = 'python3 download_fits_from_JSOC.py "HMI.ME_720s_fd10" "azimuth" '+str(start.year)+'-'+str(start.month).zfill(2)+'-01 "'+str(end.year)+'-'+str(end.month).zfill(2)+'-01"'
         print(command)
         do_command(command)
+        time.sleep(3600)
         command = 'python3 download_fits_from_JSOC.py "HMI.ME_720s_fd10" "field" '+str(start.year)+'-'+str(start.month).zfill(2)+'-01 "'+str(end.year)+'-'+str(end.month).zfill(2)+'-01"'
         print(command)
         do_command(command)
+        time.sleep(3600)
         command = 'python3 download_fits_from_JSOC.py "HMI.ME_720s_fd10" "inclination" '+str(start.year)+'-'+str(start.month).zfill(2)+'-01 "'+str(end.year)+'-'+str(end.month).zfill(2)+'-01"'
         print(command)
         do_command(command)
+        time.sleep(3600)
